@@ -7,9 +7,11 @@ typechain
 #Hardhat files
 cache
 artifacts
-.DS_Store
-gas-report.txt
+
+artifacts
+cache
+coverage
 deployments
 
-# Patrick
-.notes.md
+.DS_Store
+gas-report.txt
