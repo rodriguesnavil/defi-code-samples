@@ -1,6 +1,6 @@
 require("@nomiclabs/hardhat-waffle")
-require("hardhat-deploy")
 require("@nomiclabs/hardhat-etherscan")
+require("hardhat-deploy")
 require("solidity-coverage")
 require("hardhat-gas-reporter")
 require("dotenv").config()
@@ -20,13 +20,21 @@ const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
 const REPORT_GAS = process.env.REPORT_GAS || false
+const MAINNET_RPC_URL =
+    process.env.MAINNET_RPC_URL || "https://eth-mainnet.g.alchemy.com/v2/your-api-key"
 
 module.exports = {
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
             chainId: 31337,
-            // gasPrice: 130000000000,
+            forking: {
+                url: MAINNET_RPC_URL,
+                FORKING_BLOCK_NUMBER: 15107652,
+            },
+        },
+        localhost: {
+            chainId: 31337,
         },
         kovan: {
             url: KOVAN_RPC_URL,
