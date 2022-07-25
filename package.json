@@ -6,10 +6,22 @@
   "repository": "https://github.com/rodriguesnavil/defi-code-samples.git",
   "author": "Navil",
   "license": "MIT",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "lint": "solhint 'contracts/*.sol'",
+    "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+    "format": "prettier --write .",
+    "coverage": "hardhat coverage --solcoverjs ./.solcover.js",
+    "fuzzing": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox",
+    "slither": "slither ./contracts/ --solc-remaps '@openzeppelin/contracts=./node_modules/@openzeppelin/contracts @chainlink/contracts=./node_modules/@chainlink/contracts' --exclude naming-convention"
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",
     "@nomiclabs/hardhat-etherscan": "^3.1.0",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.7.0",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "chai": "^4.3.6",
     "dotenv": "^16.0.1",
     "ethereum-waffle": "^3.4.4",
